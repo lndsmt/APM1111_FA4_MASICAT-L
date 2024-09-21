@@ -1,0 +1,197 @@
+---
+title: "FORMATIVE ASSESSMENT 4"
+author: "Lindsy Rossel Masicat"
+date: "2024-09-19"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(moments)
+library(knitr)
+options(scipen = 999) 
+```
+<style>
+  table, caption {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+  caption{
+    font-size: 14pt;
+    font-weight: bold;
+    color: black;
+}
+</style>
+```{r table, echo=FALSE}
+normal_data <- c(67, 70, 63, 65, 68, 60, 70, 64, 69, 61, 66, 65, 71, 62, 66, 68, 64, 67, 62, 66, 65, 63, 66, 65, 63, 69, 62, 67, 59, 66, 65, 63, 65, 60, 67, 64, 68, 61, 69, 65, 62, 67, 70, 64, 63, 68, 64, 65, 61, 66)
+skewed_right_data <- c(31, 43, 30, 30, 38, 26, 29, 55, 46, 26, 29, 57, 34, 34, 36, 40, 28, 26, 66, 63, 30, 33, 24, 35, 34, 40, 24, 29, 24, 27, 35, 33, 75, 38, 34, 85, 29, 40, 41, 35, 26, 34, 19, 23, 28, 26, 31, 25, 22, 28)
+skewed_left_data <- c(102, 55, 70, 95, 73, 79, 60, 73, 89, 85, 72, 92, 76, 93, 76, 97, 10, 70, 85, 25, 83, 58, 10, 92, 82, 87, 104, 75, 80, 66, 93, 90, 84, 73, 98, 79, 35, 71, 90, 71, 63, 58, 82, 72, 93, 44, 65, 77, 81, 77)
+uniform_data <- c(12.1, 12.1, 12.4, 12.1, 12.1, 12.2, 12.2, 12.2, 11.9, 12.2, 12.3, 12.3, 11.7, 12.3, 12.3, 12.4, 12.4, 12.1, 12.4, 12.4, 12.5, 11.8, 12.5, 12.5, 12.5, 11.6, 11.6, 12, 11.6, 11.6, 11.7, 12.3, 11.7, 11.7, 11.7, 11.8, 12.5, 11.8, 11.8, 11.8, 11.9, 11.9, 11.9, 12.2, 11.9, 12, 11.9, 12, 12, 12)
+```
+
+```{r tableputput, echo=FALSE}
+data_table <- data.frame(
+  Normal = normal_data,
+  Skewed_Right = skewed_right_data,
+  Skewed_Left = skewed_left_data,
+  Uniform = uniform_data
+)
+kable(data_table, caption = "Table 5.1", align = c("c", "c", "c", "c"))
+```
+The data in Table 5.1 samples of size 50 from a normal distribution, a skewed-right distribution, a skewed-left distribution, and a uniform distribution.
+
+The normal data are female height measurements, the skewed-right data are age at marriage for females, the skewed-left data are obituary data that give the age at death for females, and the uniform data are the amount of cola put into a 12 ounce container by a soft drinks machine.
+
+# Compute the following:
+
+## 1. Find the (a) first, (b) second, (c) third, and (d ) fourth moments for each of the sets of data (normal, skewed-right, skewed-left, uniform).
+
+### Normal
+
+```{r normal, echo=FALSE}
+m1Normal <- round(sum(normal_data)/length(normal_data),2)
+m2Normal <- round(sum(normal_data^2)/length(normal_data),2)
+m3Normal <- round(sum(normal_data^3)/length(normal_data),2)
+m4Normal <- round(sum(normal_data^4)/length(normal_data),2)
+```
+(a) First Moment: `r m1Normal`
+(b) Second Moment: `r m2Normal`
+(c) Third Moment: `r m3Normal` 
+(d) Fourth Moment:`r m4Normal`
+
+### Skewed-right
+```{r skewed-rigt, echo=FALSE}
+m1SkewedRight <- round(sum(skewed_right_data)/length(skewed_right_data),2)
+m2SkewedRight <- round(sum(skewed_right_data^2)/length(skewed_right_data),2)
+m3SkewedRight <- round(sum(skewed_right_data^3)/length(skewed_right_data),2)
+m4SkewedRight <- round(sum(skewed_right_data^4)/length(skewed_right_data),2)
+```
+(a) First Moment: `r m1SkewedRight`
+(b) Second Moment: `r m2SkewedRight`
+(c) Third Moment: `r m3SkewedRight` 
+(d) Fourth Moment:`r m4SkewedRight`
+
+### Skewed-left
+```{r skewed-left, echo=FALSE}
+m1SkewedLeft <- round(sum(skewed_left_data)/length(skewed_left_data),2)
+m2SkewedLeft <- round(sum(skewed_left_data^2)/length(skewed_left_data),2)
+m3SkewedLeft <- round(sum(skewed_left_data^3)/length(skewed_left_data),2)
+m4SkewedLeft <- round(sum(skewed_left_data^4)/length(skewed_left_data),2)
+```
+(a) First Moment: `r m1SkewedLeft`
+(b) Second Moment: `r m2SkewedLeft`
+(c) Third Moment: `r m3SkewedLeft` 
+(d) Fourth Moment:`r m4SkewedLeft`
+
+### Uniform
+```{r uniform, echo=FALSE}
+m1Uniform <- round(sum(uniform_data)/length(uniform_data),2)
+m2Uniform <- round(sum(uniform_data^2)/length(uniform_data),2)
+m3Uniform <- round(sum(uniform_data^3)/length(uniform_data),2)
+m4Uniform <- round(sum(uniform_data^4)/length(uniform_data),2)
+```
+(a) First Moment: `r m1Uniform`
+(b) Second Moment: `r m2Uniform`
+(c) Third Moment: `r m3Uniform` 
+(d) Fourth Moment:`r m4Uniform`
+
+## 2. Find the (a) first, (b) second, (c) third, and (d ) fourth moments about the mean for each of the sets of data (normal, skewed-right, skewed-left, uniform).
+
+### Normal
+
+```{r normal2, echo=FALSE}
+m1Normal2 <- round(sum(normal_data - m1Normal)/length(normal_data),2)
+m2Normal2 <- round(sum((normal_data - m1Normal)^2)/length(normal_data),2)
+m3Normal2 <- round(sum((normal_data - m1Normal)^3)/length(normal_data),2)
+m4Normal2 <- round(sum((normal_data - m1Normal)^4)/length(normal_data),2)
+```
+(a) First Moment: `r m1Normal2`
+(b) Second Moment: `r m2Normal2`
+(c) Third Moment: `r m3Normal2` 
+(d) Fourth Moment:`r m4Normal2`
+
+### Skewed-right
+```{r skewedright2, echo=FALSE}
+m1SkewedRIght2 <- round(sum(skewed_right_data - m1SkewedRight)/length(skewed_right_data),2)
+m2SkewedRIght2 <- round(sum((skewed_right_data - m1SkewedRight)^2)/length(skewed_right_data),2)
+m3SkewedRIght2 <- round(sum((skewed_right_data - m1SkewedRight)^3)/length(skewed_right_data),2)
+m4SkewedRIght2 <- round(sum((skewed_right_data - m1SkewedRight)^4)/length(skewed_right_data),2)
+```
+(a) First Moment: `r m1SkewedRIght2`
+(b) Second Moment: `r m2SkewedRIght2`
+(c) Third Moment: `r m3SkewedRIght2` 
+(d) Fourth Moment:`r m4SkewedRIght2`
+
+### Skewed-Left
+```{r skewedleft2, echo=FALSE}
+m1SkewedLeft2 <- round(sum(skewed_left_data - m1SkewedLeft)/length(skewed_left_data),2)
+m2SkewedLeft2 <- round(sum((skewed_left_data - m1SkewedLeft)^2)/length(skewed_left_data),2)
+m3SkewedLeft2 <- round(sum((skewed_left_data - m1SkewedLeft)^3)/length(skewed_left_data),2)
+m4SkewedLeft2 <- round(sum((skewed_left_data - m1SkewedLeft)^4)/length(skewed_left_data),2)
+```
+(a) First Moment: `r m1SkewedLeft2`
+(b) Second Moment: `r m2SkewedLeft2`
+(c) Third Moment: `r m3SkewedLeft2` 
+(d) Fourth Moment:`r m4SkewedLeft2`
+
+### Uniform
+
+```{r uniform2, echo=FALSE}
+m1Uniform2 <- round(sum(uniform_data - m1Uniform)/length(uniform_data),2)
+m2Uniform2 <- round(sum((uniform_data - m1Uniform)^2)/length(uniform_data),2)
+m3Uniform2 <- round(sum((uniform_data - m1Uniform)^3)/length(uniform_data),2)
+m4Uniform2 <- round(sum((uniform_data - m1Uniform)^4)/length(uniform_data),2)
+```
+(a) First Moment: `r m1Uniform2`
+(b) Second Moment: `r m2Uniform2`
+(c) Third Moment: `r m3Uniform2` 
+(d) Fourth Moment:`r m4Uniform2`
+
+## 3. Find the (a) first, (b) second, (c) third, and (d ) fourth moments about the number 75 for the set of female height measurements.
+
+### Female height measurements
+
+```{r female, echo=FALSE}
+m1Female <- round(sum(normal_data - 75)/length(normal_data),2)
+m2Female <- round(sum((normal_data - 75)^2)/length(normal_data),2)
+m3Female <- round(sum((normal_data - 75)^3)/length(normal_data),2)
+m4Female <- round(sum((normal_data - 75)^4)/length(normal_data),2)
+```
+(a) First Moment: `r m1Female`
+(b) Second Moment: `r m2Female`
+(c) Third Moment: `r m3Female` 
+(d) Fourth Moment:`r m4Female`
+
+### 4. Using the results of items 2 and 3 for the set of female height measurements, verify the relations between the moments (a) $m_2 = m'_2 - m'^2_1$, <or> (b) $m_3 = m'_3 - 3m'_1m'_2 +2m'^3_1$, <or> (c) $m_4 = m'_4 - 4m'_1m'_3 + 6m'^2_1m'_2 - 3m'^4_1$.
+
+```{r verify, echo=FALSE}
+message <- "The result is the same. Thus it is correct."
+
+verify2 <- round(m2Female - m1Female^2,2)
+m2Verification <- ifelse(m2Normal2 == verify2, message, "The result is different.")
+
+verify3 <- round(m3Female - 3 * m1Female * m2Female + 2 * m1Female^3,2)
+m3Verification <- ifelse(m3Normal2 == verify3, message, "The result is different.")
+
+verify4 <- round(m4Female - 4 * m1Female * m3Female + 6 * m1Female^2 * m2Female - 3 * m1Female^4,2)
+m4Verification <- ifelse(m4Normal2 == verify4, message, "The result is different.")
+
+```
+(a) $m_2 = m'_2 - m'^2_1$
+<br>
+`r m2Normal2` = `r verify2`
+<br>
+Verification: `r m2Verification`
+<br>
+(b) $m_3 = m'_3 - 3m'_1m'_2 +2m'^3_1$
+<br>
+`r m3Normal2` = `r verify3`
+<br>
+Verification: `r m3Verification`
+<br>
+(c) $m_4 = m'_4 - 4m'_1m'_3 + 6m'^2_1m'_2 - 3m'^4_1$
+<br>
+`r m4Normal2` = `r verify4` 
+<br>
+Verification: `r m4Verification`
